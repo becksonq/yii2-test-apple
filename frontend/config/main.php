@@ -50,11 +50,11 @@ return [
         ],
         'view' => [
             'theme' => [
-                'basePath' => '@frontend/themes/apple',
-                'baseUrl'  => '@web/themes/apple',
+                'basePath' => '@frontend/themes/apples',
+                'baseUrl'  => '@web/themes/apples',
                 'pathMap'  => [
-                    '@frontend/views' => '@frontend/themes/apple/views',
-                    '@dektrium/user/views' => '@frontend/themes/apple/views/user',
+                    '@frontend/views' => '@frontend/themes/apples/views',
+                    '@dektrium/user/views' => '@frontend/themes/apples/views/user',
 //                    '@dektrium/rbac/views' => '@frontend/themes/apple/views/rbac',
                 ],
             ],

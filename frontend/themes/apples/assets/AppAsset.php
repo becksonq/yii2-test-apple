@@ -1,12 +1,12 @@
 <?php
 
 
-namespace frontend\themes\apple\assets;
+namespace frontend\themes\apples\assets;
 
 
 class AppAsset extends \yii\web\AssetBundle
 {
-    public $sourcePath = '@frontend/themes/apple/web';
+    public $sourcePath = '@frontend/themes/apples/web';
 
     public $css = [];
     public $js = [];
