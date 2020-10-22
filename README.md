@@ -2,6 +2,10 @@
 <h3 align="center">Yii 2 Advanced Project Template</h3>
     
 
+База данных:
+```
+yii2-apple
+```
 
 Тестовое задание
 

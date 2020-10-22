@@ -8,10 +8,16 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'name' => Yii::t('app', 'Yii2-test-apple'),
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'assetManager' => [
+            'linkAssets' => true,
+            // Перебор кэша для обновления ассетов (для разработки)
+            'appendTimestamp' => true,
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -36,14 +42,39 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        'view' => [
+            'theme' => [
+                'basePath' => '@frontend/themes/apple',
+                'baseUrl'  => '@web/themes/apple',
+                'pathMap'  => [
+                    '@frontend/views' => '@frontend/themes/apple/views',
+                    '@dektrium/user/views' => '@frontend/themes/apple/views/user',
+//                    '@dektrium/rbac/views' => '@frontend/themes/apple/views/rbac',
+                ],
+            ],
+        ],
+    ],
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'controllerMap' => [
+                /*'settings' => [
+                    'class' => 'frontend\controllers\user\SettingsController',
+                    'layout' => '@frontend/themes/apple/views/layouts/apple',
+                ],*/
+                /*'registration' => [
+                    'class' => 'dektrium\user\controllers\RegistrationController',
+                    'layout' => '@frontend/themes/apple/views/layouts/apple',
+                ],*/
+            ],
+            'as frontend' => 'dektrium\user\filters\FrontendFilter',
+        ],
     ],
     'params' => $params,
 ];
