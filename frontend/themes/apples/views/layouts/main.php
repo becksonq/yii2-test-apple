@@ -1,11 +1,12 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-use frontend\themes\apple\assets\AppAsset;
+use frontend\themes\apples\assets\AppAsset;
 use common\widgets\Alert;
 
 AppAsset::register($this);
@@ -27,11 +28,13 @@ AppAsset::register($this);
 <?= $this->render('_navbar') ?>
 <main role="main">
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+        <div class="row">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= Alert::widget() ?>
+            <?= $content ?>
+        </div>
     </div>
 </main>
 

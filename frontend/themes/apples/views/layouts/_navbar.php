@@ -11,7 +11,8 @@ NavBar::begin([
     'brandLabel' => Yii::$app->name,
     'brandUrl'   => Yii::$app->homeUrl,
     'options'    => [
-        'class' => 'navbar navbar-expand-lg navbar-light bg-light',
+        'class' => 'navbar navbar-expand-lg navbar-light',
+        'style' => 'background-color: #42d697;',
     ],
 ]);
 
@@ -23,7 +24,7 @@ echo Nav::widget([
         ],
         [
             'label' => 'Apples',
-            'url'   => Url::to(['/apples/index'])
+            'url'   => Url::to(['/apples/apples/index'])
         ],
         [
             'label'   => Yii::t('app', 'Вход'),
