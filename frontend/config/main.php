@@ -46,6 +46,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'site/index' => 'site/index',
+                '<controller>/<action>/<id:\d+>' => 'apples/<controller>/<action>',
+                '<controller>/<action>' => 'apples/<controller>/<action>',
             ],
         ],
         'view' => [
