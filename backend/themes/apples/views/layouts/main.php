@@ -1,12 +1,11 @@
 <?php
 
 /* @var $this \yii\web\View */
-
 /* @var $content string */
 
+use backend\themes\apples\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap4\Breadcrumbs;
-use frontend\themes\apples\assets\AppAsset;
+use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
 AppAsset::register($this);
@@ -25,22 +24,17 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<?= $this->render('_navbar') ?>
-<main role="main">
-    <div class="container">
-        <div class="row pt-5">
-            <div class="col-md-12">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            </div>
-            <div class="col-md-12 mt-3">
-                <?= Alert::widget() ?>
-            </div>
-            <?= $content ?>
-        </div>
+<div class="wrap">
+    <?= $this->render('_navbar') ?>
+
+    <div class="container mt-5">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
     </div>
-</main>
+</div>
 
 <?= $this->render('_footer') ?>
 

@@ -6,6 +6,14 @@
 ```
 yii2-apple
 ```
+Миграция для yii2-user
+```
+$ php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
+```
+Миграция для yii2-rbac
+```
+$ php yii migrate/up --migrationPath=@yii/rbac/migrations
+```
 
 Тестовое задание
 

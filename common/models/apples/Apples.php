@@ -26,7 +26,7 @@ class Apples extends ActiveRecord
     // Статус "Яблоко гнилое"
     const ROTTEN_APPLE = 2;
     /** Время жизни яблока на земле (минут) */
-    const LIFETIME = 5;
+    const LIFETIME = 5 * 3600;
     // Цвет новых яблок
     const APPLE_COLOR = ['green', 'red', 'violet'];
     // Процент откусываемой части

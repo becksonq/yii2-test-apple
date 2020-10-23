@@ -21,11 +21,6 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-        ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
@@ -65,17 +60,6 @@ return [
     ],
     'modules' => [
         'user' => [
-            'class' => 'dektrium\user\Module',
-            'controllerMap' => [
-                /*'settings' => [
-                    'class' => 'frontend\controllers\user\SettingsController',
-                    'layout' => '@frontend/themes/apple/views/layouts/apple',
-                ],*/
-                /*'registration' => [
-                    'class' => 'dektrium\user\controllers\RegistrationController',
-                    'layout' => '@frontend/themes/apple/views/layouts/apple',
-                ],*/
-            ],
             'as frontend' => 'dektrium\user\filters\FrontendFilter',
         ],
     ],
