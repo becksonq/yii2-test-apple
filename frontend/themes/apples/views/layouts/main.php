@@ -32,7 +32,9 @@ AppAsset::register($this);
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
-            <?= Alert::widget() ?>
+            <div class="col-md-12 mt-3">
+                <?= Alert::widget() ?>
+            </div>
             <?= $content ?>
         </div>
     </div>
