@@ -27,6 +27,8 @@ class Apples extends ActiveRecord
     /** Цвет новых яблок */
     const APPLE_COLOR = ['green', 'red', 'violet'];
 
+    const EAT_PERCENT = .25;
+
     public $onTree;
 
     public $onEarth;
@@ -66,6 +68,7 @@ class Apples extends ActiveRecord
             [['apple_color', 'date_create',], 'required'],
             [['date_create', 'date_fall', 'status', 'created_at', 'updated_at'], 'integer'],
             [['eat_percent'], 'number'],
+            ['eat_percent', 'default', 'value' => 1],
             [['apple_color'], 'string', 'max' => 255],
         ];
     }
