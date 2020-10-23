@@ -19,21 +19,18 @@ use yii\db\ActiveRecord;
  */
 class Apples extends ActiveRecord
 {
-    /**  */
+    // Статус "Яблоко на дереве"
     const ON_TREE = 1;
+    // Статус "Яблоко упало на землю"
     const ON_EARTH = 0;
-    const ROTTEN_APPLE = 'rotten_apple';
-
-    /** Цвет новых яблок */
+    // Статус "Яблоко гнилое"
+    const ROTTEN_APPLE = 2;
+    /** Время жизни яблока на земле (минут) */
+    const LIFETIME = 5;
+    // Цвет новых яблок
     const APPLE_COLOR = ['green', 'red', 'violet'];
-
+    // Процент откусываемой части
     const EAT_PERCENT = .25;
-
-    public $onTree;
-
-    public $onEarth;
-
-    public $rottenApple;
 
     /**
      * {@inheritdoc}
@@ -102,5 +99,29 @@ class Apples extends ActiveRecord
         $apple->date_create = $date_create;
 
         return $apple;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOnTree(): bool
+    {
+        return $this->status == self::ON_TREE;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOnEarth(): bool
+    {
+        return $this->status == self::ON_EARTH;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRotten(): bool
+    {
+        return $this->status == self::ROTTEN_APPLE;
     }
 }

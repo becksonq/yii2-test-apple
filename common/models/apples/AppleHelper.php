@@ -18,6 +18,7 @@ class AppleHelper
             'green'  => 'Зеленое',
             'red'    => 'Красное',
             'violet' => 'Фиолетовое',
+            'dark'   => 'Черное',
         ];
     }
 
@@ -37,8 +38,9 @@ class AppleHelper
     public static function status()
     {
         return [
-            Apples::ON_TREE  => 'Еще на дереве',
-            Apples::ON_EARTH => 'Уже на земле',
+            Apples::ON_TREE      => 'Еще на дереве',
+            Apples::ON_EARTH     => 'Уже на земле',
+            Apples::ROTTEN_APPLE => 'Уже все :(',
         ];
     }
 
@@ -61,6 +63,7 @@ class AppleHelper
             'green'  => '-success',
             'red'    => '-danger',
             'violet' => '-primary',
+            'dark'   => '-dark',
         ];
     }
 
@@ -115,11 +118,14 @@ class AppleHelper
      */
     public static function state(Apples $model): string
     {
-        if ($model->status == Apples::ON_TREE) {
+        if ($model->isOnTree()) {
             $string = 'Появилось ' . \Yii::$app->formatter->asDatetime($model->date_create, "php:d.m.Y H:i");
         }
-        if ($model->status == Apples::ON_EARTH) {
+        if ($model->isOnEarth()) {
             $string = 'Упало ' . \Yii::$app->formatter->asDatetime($model->date_fall, "php:d.m.Y H:i");
+        }
+        if ($model->isRotten()) {
+            $string = 'Яблоко гнилое';
         }
         return $string;
     }

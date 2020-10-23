@@ -3,15 +3,20 @@
 
 namespace common\models\apples;
 
-
+/**
+ * Class AppleService
+ * @package common\models\apples
+ */
 class AppleService
 {
-    /** @var Apples $_apples */
     private $_apples;
-
-    /** @var AppleRepository $_repository */
     private $_repository;
 
+    /**
+     * AppleService constructor.
+     * @param Apples $apples
+     * @param AppleRepository $repository
+     */
     public function __construct(Apples $apples, AppleRepository $repository)
     {
         $this->_apples = $apples;
@@ -33,21 +38,35 @@ class AppleService
         return $apple;
     }
 
+    /**
+     * @return array|\yii\db\ActiveRecord[]
+     */
     public function findAll()
     {
         return $this->_repository->findAll();
     }
 
+    /**
+     * Удаляем все яблоки
+     */
     public function deleteAll()
     {
         $this->_repository->deleteAll();
     }
 
+    /**
+     * @param int $id
+     * @return array|\yii\db\ActiveRecord|null
+     */
     public function findOne(int $id)
     {
         return $this->_repository->findOne($id);
     }
 
+    /**
+     * @param int $count
+     * @return array
+     */
     public function createApples(int $count): array
     {
         $apples = [];
@@ -58,6 +77,10 @@ class AppleService
         return $apples;
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function changeStatus(int $id)
     {
         /** @var Apples $model */
@@ -79,7 +102,6 @@ class AppleService
         /** @var Apples $model */
         $model = $this->_repository->findOne($id);
         if ($model->eat_percent <= Apples::EAT_PERCENT) {
-            $model->eat_percent = 0;
             $this->_repository->delete($model);
             return false;
         } else {
@@ -87,5 +109,21 @@ class AppleService
         }
 
         return $this->_repository->update($model);
+    }
+
+    /**
+     * @param array $models
+     */
+    public function checkStatus(array $models)
+    {
+        foreach ($models as $model) {
+            $lifetime = (time() - $model->date_fall) > Apples::LIFETIME;
+            /** @var Apples $model */
+            if ($model->date_fall !== null && $lifetime) {
+                $model->apple_color = 'dark';
+                $model->status = Apples::ROTTEN_APPLE;
+                $this->_repository->update($model);
+            }
+        }
     }
 }

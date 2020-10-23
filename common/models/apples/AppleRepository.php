@@ -4,8 +4,10 @@
 namespace common\models\apples;
 
 
-use yii\web\NotFoundHttpException;
-
+/**
+ * Class AppleRepository
+ * @package common\models\apples
+ */
 class AppleRepository
 {
     /**
