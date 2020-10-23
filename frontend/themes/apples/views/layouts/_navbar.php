@@ -35,7 +35,9 @@ echo Nav::widget([
             'label'       => Yii::t('app', 'Выйти'),
             'url'         => Url::to(['/user/security/logout']),
             'visible'     => !Yii::$app->user->isGuest,
-            'data-method' => 'post',
+            'linkOptions' => [
+                'data-method' => 'post',
+            ],
         ],
     ],
     'options' => ['class' => 'navbar-nav ml-5'],
