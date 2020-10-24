@@ -40,7 +40,7 @@ class AppleHelper
         return [
             Apples::ON_TREE      => 'Еще на дереве',
             Apples::ON_EARTH     => 'Уже на земле',
-            Apples::ROTTEN_APPLE => 'Уже все :(',
+            Apples::ROTTEN_APPLE => 'Ой, все :(',
         ];
     }
 

@@ -8,7 +8,7 @@ use yii\helpers\Url;
  */
 ?>
 
-<div class="col-sm-12 my-5">
+<div class="col-sm-12 mb-5">
     <?= Html::beginTag('div', ['class' => 'btn-group', 'role' => 'group', 'aria-label' => 'Basic example']) ?>
     <?= Html::a(Yii::t('app', 'Создать яблоки'), Url::to(['apples/apples/create-apples']), [
         'class' => 'btn btn-success',
